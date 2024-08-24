@@ -4,9 +4,43 @@ import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
+// const baseUrl = process.env.VERCEL_URL
+//   ? `https://${process.env.VERCEL_URL}`
+//   : `http://localhost:${process.env.PORT || 3000}`;
+// const imageUrl = `${baseUrl}/thumbnail.jpg`;
+
+const title = "eleveNeleven";
+// const titleTemplate = "%s | eleveNeleven";
+const description = "Music Marketplace built with 🏗 Scaffold-ETH 2";
+
 export const metadata = getMetadata({
-  title: "Scaffold-ETH 2 App",
-  description: "Built with 🏗 Scaffold-ETH 2",
+  // metadataBase: new URL(baseUrl),
+  title: title,
+  description,
+  // openGraph: {
+  //   title: {
+  //     default: title,
+  //     template: titleTemplate,
+  //   },
+  //   description,
+  //   images: [
+  //     {
+  //       url: imageUrl,
+  //     },
+  //   ],
+  // },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   images: [imageUrl],
+  //   title: {
+  //     default: title,
+  //     template: titleTemplate,
+  //   },
+  //   description,
+  // },
+  // icons: {
+  //   icon: [{ url: "/favicon.png", sizes: "32x32", type: "image/png" }],
+  // },
 });
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
