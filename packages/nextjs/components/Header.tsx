@@ -120,7 +120,7 @@ export const Header = () => {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">eleveNeleven</span>
+            <span className="font-bold leading-tight">TECHNAI</span>
             <span className="text-xs">Music NFT Marketplace</span>
           </div>
         </Link>

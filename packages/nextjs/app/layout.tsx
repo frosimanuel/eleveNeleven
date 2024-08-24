@@ -9,7 +9,7 @@ import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 //   : `http://localhost:${process.env.PORT || 3000}`;
 // const imageUrl = `${baseUrl}/thumbnail.jpg`;
 
-const title = "eleveNeleven";
+const title = "TECHNAI";
 // const titleTemplate = "%s | eleveNeleven";
 const description = "Music Marketplace built with 🏗 Scaffold-ETH 2";
 
