@@ -1,11 +1,13 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
+// import { ethers } from "hardhat";
+
+const FRONTEND_BURNER_WALLET = "0x81254A6430d9A54bAb64CF3b65B624c7CCCBA6b7";
+
+// const localChainId = "31337";
 
 /**
- * Deploys a contract named "YourContract" using the deployer account and
- * constructor arguments set to the deployer address
- *
  * @param hre HardhatRuntimeEnvironment object.
  */
 const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
@@ -21,20 +23,61 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
+  // const chainId = await hre.getChainId();
 
-  await deploy("YourContract", {
+  await deploy("MockERC20", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    // args: [deployer],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
 
-  // Get the deployed contract to interact with it after deploying.
-  const yourContract = await hre.ethers.getContract<Contract>("YourContract", deployer);
-  console.log("👋 Initial greeting:", await yourContract.greeting());
+  await deploy("MockERC721", {
+    from: deployer,
+    log: true,
+    autoMine: true,
+  });
+
+  await deploy("Marketplace", {
+    from: deployer,
+    log: true,
+    autoMine: true,
+  });
+
+  // Mint 1000 MockERC20 tokens to user wallet
+  const MockERC20 = await hre.ethers.getContract<Contract>("MockERC20", deployer);
+  await MockERC20.mint(FRONTEND_BURNER_WALLET, 1000);
+
+  // set collection royalty for MockERC721 NFT
+
+  // const MockERC721 = await ethers.getContract<Contract>("MockERC721", deployer);
+  // const Marketplace = await ethers.getContract<Contract>("Marketplace", deployer);
+  // await Marketplace.setNFTCollectionRoyalty(
+  //   MockERC721.address,
+  //   "MockERC721",
+  //   "0x21aDafAA34d250a4fa0f8A4d2E2424ABa0cEE563",
+  //   1000,
+  // );
+
+  // MAYBE THIS IS A DEPRECATED WAY TO VERIFY CONTRACTS:
+  // Verify from the command line by running `yarn verify`
+
+  // You can also Verify your contracts with Etherscan here...
+  // You don't want to verify on localhost
+  // try {
+  //   if (chainId !== localChainId) {
+  //     await run("verify:verify", {
+  //       address: YourContract.address,
+  //       contract: "contracts/YourContract.sol:YourContract",
+  //       constructorArguments: [],
+  //     });
+  //   }
+  // } catch (error) {
+  //   console.error(error);
+  // }
 };
 
 export default deployYourContract;
