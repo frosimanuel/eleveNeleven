@@ -64,4 +64,8 @@ contract MockERC721 is ERC721, ERC721Enumerable, ERC721URIStorage {
 
         return true;
     }
+
+    function tokenIdCounter() public view returns (uint256) {
+        return _tokenIds;
+    }
 }
