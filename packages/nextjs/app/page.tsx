@@ -18,6 +18,12 @@ const Home: NextPage = () => {
             <span className="block text-2xl mb-2">Welcome to</span>
             <span className="block text-4xl font-bold">TECHNAI</span>
           </h1>
+          {/* <video controls autoPlay className="media">
+            <source 
+              src="https://sapphire-tiny-canid-221.mypinata.cloud/ipfs/QmYL6mYoq71E8UnzPsASb2bNNzLPyFfLwNRwqqXEMfKRZC" 
+              type="audio/mpeg" 
+            />
+          </video>           */}
           <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
             <p className="my-2 font-medium">Connected Address:</p>
             <Address address={connectedAddress} />

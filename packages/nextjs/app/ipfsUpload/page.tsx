@@ -6,6 +6,9 @@ import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import nftsMetadata from "~~/utils/simpleNFT/nftsMetadata";
 
+// import { NFTStorage } from "nft.storage";
+// const APIKEY = '';
+
 const LazyReactJson = lazy(() => import("react-json-view"));
 
 const IpfsUpload: NextPage = () => {
@@ -19,9 +22,14 @@ const IpfsUpload: NextPage = () => {
 
   const handleIpfsUpload = async () => {
     setLoading(true);
+    // const nftStorage = new NFTStorage({ token: APIKEY, });
     const notificationId = notification.loading("Uploading to IPFS...");
+    //This was the code intentended to upload to FILECOIN network, but nft.store was decomissioned and no uploads are permited atm
+
+    // const uploadedTonftStorage = await nftStorage.store(yourJSON);
     try {
       const uploadedItem = await addToIPFS(yourJSON);
+
       notification.remove(notificationId);
       notification.success("Uploaded to IPFS");
 
