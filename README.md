@@ -52,6 +52,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Features
 
+🤝 **Social Features**: We aim to add social features to our marketplace, like creating profiles, notifications, messaging, following artists, liking NFTs, and commenting on NFTs.
+
 🎨 **PolyMint**: PolyMint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists access tokenizing their art without friction.
 
 The first minter of a collection, who pays for cost of the deployment of the NFT contract, gets a share of the royalties of all the NFTs minted in that collection. This creates a market for art investors being eager to first mint a piece of art they like.
@@ -70,6 +72,14 @@ In the case of PolyMint, the first minter of a collection gets a share of the ro
 
 🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function.
 
+🎶 **Music NFTs**: We add music to NFTs metadata and integrate with frontend, so that artists can tokenize their music and collectors can enjoy it.
+
+🔒 **EIP-712 Signature**: We implement EIP-712 signature for PolyMint, to allow users to sign messages with their private keys, and thus interact with the smart contract in a secure and gasless way.
+
+🎨 **Royalty Standards**: We are still determinating which Royalty standard to implement to NFTs, and thus allow artists to set royalties for their art for all marketplaces that implement the standard.
+
+🔄 **Remixing Feature**: We aim to add remixing feature for NFTs, where the creator receives 30% of the royalties of the remix.
+
 # Roadmap
 
 ## Core development
@@ -81,7 +91,6 @@ In the case of PolyMint, the first minter of a collection gets a share of the ro
 - Create a page for minting that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
 - Create a page for interacting with the marketplace buy function and/or auction function (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - Implement uploading the NFT Metadata to Filecoin instead of IPFS, and use it with a EIP-712 signature for PolyMint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
--
 
 ## Smart contracts
 
