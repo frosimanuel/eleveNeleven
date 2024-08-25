@@ -50,7 +50,7 @@ yarn start
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
 
-### Features
+# Features
 
 🎨 **PolyMint**: PolyMint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists access tokenizing their art without friction.
 
