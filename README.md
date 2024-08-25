@@ -81,13 +81,32 @@ In the case of PolyMint, the first minter of a collection gets a share of the ro
 - Create a page for minting that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
 - Create a page for interacting with the marketplace buy function and/or auction function (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - Implement uploading the NFT Metadata to Filecoin instead of IPFS, and use it with a EIP-712 signature for PolyMint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
+-
 
 ## Smart contracts
 
-- Add USDC as payment method (and maybe stable payment in native gas token with Chainlink Price Feeds) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
+- Add payment in native gas token and maybe add a mixed pay that allows paying in USDC or native gas token (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - Implement EIP-712 signature for PolyMint (Reference: [eip712hashing.sol](https://github.com/Cyfrin/security-and-auditing-full-course-s23/blob/main/eip712hashing.sol))
 - Add royalties to NFT and Marketplace (creator, contract owner, 1st minter -optional-) (Reference: [Simple Marketplace w/ Royalties](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - Determine which Royalty standard to implement to NFTs (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910))
 - Add a functionality to move NFTs between Polygon and Avalanche with Chainlink CCIP (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
+
+## Future development
+
+### Frontend
+
+- Introduce web2 social features like creating profiles, following artists, liking NFTs, and commenting on NFTs
+- Notification system for increasing engagement (customizable and ideally with email or mobile notifications)
+- Feature for creating collections of NFTs and displaying them in a gallery
+- Ability to make your own group/community
+- Ability to create a profile with a linked wallet (could be with account abstraction to make paymaster feature of PolyMint easier)
+- Profile creation with web2.5 login (Twitter, Instagram, Google, etc)
+- Messaging system for artists and collectors
+
+### Smart contracts
+
+- Add remixing feature for NFTs, where the creator receives 30% of the royalties of the remix
+- Add support for ERC1155 to the marketplace
+- Add a functionality to periodically airdrop dividends in USDC for creators (and first minters if appliable)
 
 Reference for expanding marketplace functionalities: [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts)
