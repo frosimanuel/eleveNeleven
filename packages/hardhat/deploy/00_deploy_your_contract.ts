@@ -51,6 +51,12 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   const MockERC20 = await hre.ethers.getContract<Contract>("MockERC20", deployer);
   await MockERC20.mint(FRONTEND_BURNER_WALLET, 1000);
 
+  await deploy("Signature712", {
+    from: deployer,
+    log: true,
+    autoMine: true,
+  });
+
   // set collection royalty for MockERC721 NFT
 
   // const MockERC721 = await ethers.getContract<Contract>("MockERC721", deployer);

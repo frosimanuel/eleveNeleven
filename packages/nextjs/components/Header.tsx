@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  ArrowDownTrayIcon,
+  // ArrowDownTrayIcon,
   ArrowPathIcon,
   ArrowUpTrayIcon,
   Bars3Icon,
@@ -23,29 +23,29 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "Home",
+    label: "Featured",
     href: "/",
   },
   {
-    label: "My NFTs",
+    label: "View all NFTs",
     href: "/myNFTs",
     icon: <PhotoIcon className="h-4 w-4" />,
+  },
+  {
+    label: "PolyMint",
+    href: "/polyMint",
+    icon: <ArrowUpTrayIcon className="h-4 w-4" />,
   },
   {
     label: "Transfers",
     href: "/transfers",
     icon: <ArrowPathIcon className="h-4 w-4" />,
   },
-  {
-    label: "IPFS Upload",
-    href: "/ipfsUpload",
-    icon: <ArrowUpTrayIcon className="h-4 w-4" />,
-  },
-  {
-    label: "IPFS Download",
-    href: "/ipfsDownload",
-    icon: <ArrowDownTrayIcon className="h-4 w-4" />,
-  },
+  // {
+  //   label: "IPFS Download",
+  //   href: "/ipfsDownload",
+  //   icon: <ArrowDownTrayIcon className="h-4 w-4" />,
+  // },
   {
     label: "Debug Contracts",
     href: "/debug",

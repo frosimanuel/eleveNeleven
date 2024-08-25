@@ -27,13 +27,13 @@ const MyNFTs: NextPage = () => {
 
     const tokenIdCounterNumber = Number(tokenIdCounter);
     const currentTokenMetaData = nftsMetadata[tokenIdCounterNumber % nftsMetadata.length];
-    const notificationId = notification.loading("Uploading to IPFS");
+    const notificationId = notification.loading("Uploading to Filecoin");
     try {
       const uploadedItem = await addToIPFS(currentTokenMetaData);
 
       // First remove previous loading notification and then show success notification
       notification.remove(notificationId);
-      notification.success("Metadata uploaded to IPFS");
+      notification.success("Metadata uploaded to Filecoin");
 
       await writeContractAsync({
         functionName: "mintItem",
