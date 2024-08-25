@@ -85,6 +85,7 @@ In the case of PolyMint, the first minter of a collection gets a share of the ro
 ## Smart contracts
 
 - Add USDC as payment method (and maybe stable payment in native gas token with Chainlink Price Feeds) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
+- Implement EIP-712 signature for PolyMint (Reference: [eip712hashing.sol](https://github.com/Cyfrin/security-and-auditing-full-course-s23/blob/main/eip712hashing.sol))
 - Add royalties to NFT and Marketplace (creator, contract owner, 1st minter -optional-) (Reference: [Simple Marketplace w/ Royalties](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - Determine which Royalty standard to implement to NFTs (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910))
 - Add a functionality to move NFTs between Polygon and Avalanche with Chainlink CCIP (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
