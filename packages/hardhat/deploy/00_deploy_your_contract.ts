@@ -5,7 +5,12 @@ import { Contract } from "ethers";
 
 const FRONTEND_BURNER_WALLET = "0x81254A6430d9A54bAb64CF3b65B624c7CCCBA6b7";
 
-// const localChainId = "31337";
+const localChainId = "31337";
+const avalancheFujiChainId = "43113";
+const polygonAmoyChainId = "80002";
+
+const usdcOnPolygonAmoy = "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582";
+const usdcOnAvalancheFuji = "0x5425890298aed601595a70AB815c96711a31Bc65";
 
 /**
  * @param hre HardhatRuntimeEnvironment object.
@@ -23,7 +28,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   */
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
-  // const chainId = await hre.getChainId();
+  const chainId = await hre.getChainId();
 
   await deploy("MockERC20", {
     from: deployer,
@@ -35,6 +40,15 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
     autoMine: true,
   });
 
+  const USDC_ADDRESS =
+    chainId === localChainId
+      ? (await hre.deployments.get("MockERC20")).address
+      : chainId === avalancheFujiChainId
+      ? usdcOnAvalancheFuji
+      : chainId === polygonAmoyChainId
+      ? usdcOnPolygonAmoy
+      : "";
+
   await deploy("MockERC721", {
     from: deployer,
     log: true,
@@ -43,6 +57,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
 
   await deploy("Marketplace", {
     from: deployer,
+    args: [USDC_ADDRESS],
     log: true,
     autoMine: true,
   });

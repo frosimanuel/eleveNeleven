@@ -10,10 +10,16 @@ contract Marketplace is ReentrancyGuard, Ownable {
     // * State
     uint256 private listingIds; // Replaces the Counters.Counter
 
+    enum Currency {
+        NativeToken,
+        USDCToken
+    }
+
     mapping(uint256 => Listing) public listings;
     mapping(address => Royalties) public royalties; // Royalty information by collection address.
 
     uint256 private constant BPS = 10000;
+    address public immutable USDC;
 
     // * Structs
     // Single NFT listing
@@ -22,7 +28,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
         uint256 nftId;
         address payable seller;
         uint256 price;
-        address payableCurrency;
+        Currency payableCurrency;
         bool isAuction;
         uint256 date;
         address highestBidder;
@@ -43,7 +49,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
         uint256 indexed nftId,
         address seller,
         uint256 price,
-        address payableCurrency,
+        Currency payableCurrency,
         bool isAuction,
         uint256 date,
         address highestBidder
@@ -62,14 +68,16 @@ contract Marketplace is ReentrancyGuard, Ownable {
     }
 
     // * Constructor
-    constructor() Ownable(msg.sender) {}
+    constructor(address _usdcAddress) Ownable(msg.sender) {
+        USDC = _usdcAddress;
+    }
 
     // * Create Listing
     function createListing(
         address nftContract,
         uint256 nftId,
         uint256 price,
-        address payableCurrency,
+        Currency payableCurrency,
         bool isAuction,
         uint256 biddingTime
     ) public nonReentrant {
@@ -99,7 +107,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
         address nftSeller = item.seller;
         uint256 nftId = item.nftId;
         uint256 price = item.price;
-        address payableCurrency = item.payableCurrency;
+        Currency payableCurrency = item.payableCurrency;
         uint256 baseRoyalty = royalties[contractAddress].royaltyAmount;
         address royaltyReceiver = royalties[contractAddress].payoutAccount;
         require(msg.sender != nftSeller, "You cannot buy an NFT you are selling.");
@@ -111,9 +119,13 @@ contract Marketplace is ReentrancyGuard, Ownable {
         // Transfer NFT to the buyer
         IERC721(contractAddress).safeTransferFrom(nftSeller, msg.sender, nftId);
         // Transfer sale proceeds to seller, minus royalty
-        IERC20(payableCurrency).transferFrom(msg.sender, nftSeller, price - ((price * baseRoyalty) / BPS)); // price - royalty
-        // Transfer royalty to the royalty receiver
-        IERC20(payableCurrency).transferFrom(msg.sender, royaltyReceiver, (price * baseRoyalty) / BPS); // just royalty
+        if (payableCurrency == Currency.USDCToken) {
+            IERC20(USDC).transferFrom(msg.sender, nftSeller, price - ((price * baseRoyalty) / BPS)); // price - royalty
+            // Transfer royalty to the royalty receiver
+            IERC20(USDC).transferFrom(msg.sender, royaltyReceiver, (price * baseRoyalty) / BPS); // just royalty
+        } else {
+            // Implement AggregatorV3Interface to convert the USD value to the native token equivalent value
+        }
 
         emit Purchase(listingId, msg.sender, price);
     }
@@ -138,17 +150,21 @@ contract Marketplace is ReentrancyGuard, Ownable {
         Listing storage listing = listings[listingId];
         uint256 currentBid = listing.price;
         address highestBidder = listing.highestBidder;
-        address payableCurrency = listing.payableCurrency;
+        Currency payableCurrency = listing.payableCurrency;
         require(msg.sender != listing.seller, "You cannot bid on an NFT you are selling.");
         require(listing.isAuction, "This listing is not an auction");
         require(block.timestamp < listing.date, "Auction has already ended");
         require(amount > listing.price, "Bid must be greater than the previous bid.");
 
-        // Escrow payment in the marketplace contract
-        IERC20(payableCurrency).transferFrom(msg.sender, address(this), amount);
-        // Transfer current bid back to previous bidder if applicable
-        if (listing.highestBidder != address(0)) {
-            IERC20(payableCurrency).transfer(highestBidder, currentBid);
+        if (payableCurrency == Currency.USDCToken) {
+            // Escrow payment in the marketplace contract
+            IERC20(USDC).transferFrom(msg.sender, address(this), amount);
+            // Transfer current bid back to previous bidder if applicable
+            if (listing.highestBidder != address(0)) {
+                IERC20(USDC).transfer(highestBidder, currentBid);
+            }
+        } else {
+            // Implement AggregatorV3Interface to convert the USD value to the native token equivalent value
         }
         // Update to new bid values
         listing.highestBidder = msg.sender;
@@ -167,7 +183,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
         uint256 endBid = listing.price;
         uint256 baseRoyalty = royalties[contractAddress].royaltyAmount;
         address royaltyReceiver = royalties[contractAddress].payoutAccount;
-        address payableCurrency = listing.payableCurrency;
+        Currency payableCurrency = listing.payableCurrency;
         uint256 sellerAmount = endBid - ((endBid * baseRoyalty) / BPS);
         uint256 royaltyRecAmount = (endBid * baseRoyalty) / BPS;
         require(
@@ -175,8 +191,12 @@ contract Marketplace is ReentrancyGuard, Ownable {
         );
 
         IERC721(contractAddress).safeTransferFrom(nftSeller, highestBidder, nftId);
-        IERC20(payableCurrency).transfer(nftSeller, sellerAmount);
-        IERC20(payableCurrency).transfer(royaltyReceiver, royaltyRecAmount);
+        if (payableCurrency == Currency.USDCToken) {
+            IERC20(USDC).transfer(nftSeller, sellerAmount);
+            IERC20(USDC).transfer(royaltyReceiver, royaltyRecAmount);
+        } else {
+            // Implement AggregatorV3Interface to convert the USD value to the native token equivalent value
+        }
 
         // Update listing status
         listing.isAuction = false;

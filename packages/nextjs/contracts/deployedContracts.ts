@@ -7,10 +7,16 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Marketplace: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
       abi: [
         {
-          inputs: [],
+          inputs: [
+            {
+              internalType: "address",
+              name: "_usdcAddress",
+              type: "address",
+            },
+          ],
           stateMutability: "nonpayable",
           type: "constructor",
         },
@@ -76,9 +82,9 @@ const deployedContracts = {
             },
             {
               indexed: false,
-              internalType: "address",
+              internalType: "enum Marketplace.Currency",
               name: "payableCurrency",
-              type: "address",
+              type: "uint8",
             },
             {
               indexed: false,
@@ -134,9 +140,9 @@ const deployedContracts = {
                   type: "uint256",
                 },
                 {
-                  internalType: "address",
+                  internalType: "enum Marketplace.Currency",
                   name: "payableCurrency",
-                  type: "address",
+                  type: "uint8",
                 },
                 {
                   internalType: "bool",
@@ -239,6 +245,19 @@ const deployedContracts = {
           type: "event",
         },
         {
+          inputs: [],
+          name: "USDC",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "uint256",
@@ -300,9 +319,9 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "address",
+              internalType: "enum Marketplace.Currency",
               name: "payableCurrency",
-              type: "address",
+              type: "uint8",
             },
             {
               internalType: "bool",
@@ -370,9 +389,9 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "address",
+              internalType: "enum Marketplace.Currency",
               name: "payableCurrency",
-              type: "address",
+              type: "uint8",
             },
             {
               internalType: "bool",
@@ -568,7 +587,7 @@ const deployedContracts = {
       },
     },
     MockERC20: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
       abi: [
         {
           inputs: [],
@@ -860,7 +879,7 @@ const deployedContracts = {
               type: "uint8",
             },
           ],
-          stateMutability: "view",
+          stateMutability: "pure",
           type: "function",
         },
         {
