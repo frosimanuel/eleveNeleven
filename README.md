@@ -1,5 +1,6 @@
-<h1 align="center"> 🤫 TECHNAI 🤫</h1>
-  <h4 align="center">Built for Aleph Hackathon !</h4>
+<div style="text-align: center;">
+  <img src="packages/nextjs/public/logo.png" alt="Alt text" style="max-width: 100%; height: auto;">
+</div>
 
 <!-- <h4 align="center">
   <a href="Link to slides">Slides</a> |
@@ -7,6 +8,8 @@
 </h4> -->
 
 # About
+
+<h4 align="center">Project started on <a href="https://www.aleph.crecimiento.build/es-aleph-hackathon" alt="Aleph Hackathon Website">Aleph Hackathon</a> !</h4>
 
 🧪 This NFT Marketplace dApp is designed to facilitate art tokenization for artists, big and small.
 
