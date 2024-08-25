@@ -1,0 +1,21 @@
+type NFT @entity {
+  id: ID!
+  tokenId: BigInt!
+  owner: User!
+  uri: String!
+  collection: Collection!
+}
+
+type Collection @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  nfts: [NFT!]!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  nfts: [NFT!]!
+}
+
