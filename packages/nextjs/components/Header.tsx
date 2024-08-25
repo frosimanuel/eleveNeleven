@@ -27,9 +27,14 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/",
   },
   {
-    label: "View all NFTs",
+    label: "Mint collection",
     href: "/myNFTs",
     icon: <PhotoIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Marketplace",
+    href: "/myNFTs",
+    icon: <BugAntIcon className="h-4 w-4" />,
   },
   {
     label: "PolyMint",
@@ -46,11 +51,11 @@ export const menuLinks: HeaderMenuLink[] = [
   //   href: "/ipfsDownload",
   //   icon: <ArrowDownTrayIcon className="h-4 w-4" />,
   // },
-  {
-    label: "Debug Contracts",
-    href: "/debug",
-    icon: <BugAntIcon className="h-4 w-4" />,
-  },
+  // {
+  //   label: "Debug Contracts",
+  //   href: "/debug",
+  //   icon: <BugAntIcon className="h-4 w-4" />,
+  // },
 ];
 
 export const HeaderMenuLinks = () => {

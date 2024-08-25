@@ -1,81 +1,85 @@
 const nftsMetadata = [
   {
-    description: "It's actually a bison?",
+    description: "House music for the soul.",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmdsAeLoVrhu9APcXZuTGfnptgSrty2rfUULr5bqEEotLK",
-    name: "Buffalo",
+    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    name: "PiccaWho?",
     attributes: [
       {
-        trait_type: "BackgroundColor",
-        value: "green",
+        trait_type: "Artwork",
+        value: "abstract",
       },
       {
-        trait_type: "Eyes",
-        value: "googly",
+        trait_type: "Reproduction Type",
+        value: "mp3",
       },
       {
-        trait_type: "Stamina",
-        value: 42,
+        trait_type: "Track Length",
+        value: "4:20",
       },
     ],
   },
   {
-    description: "What is it so worried about?",
+    description: "Reproduce and repeat.",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/Qmf5UMKoWMEmza91tYT9UPx5PeSaburp9VeeN5w6NUFVG8",
-    name: "Zebra",
+    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    name: "Mitosis 42",
     attributes: [
       {
-        trait_type: "BackgroundColor",
-        value: "blue",
+        trait_type: "Artwork",
+        value: "nebula",
       },
       {
-        trait_type: "Eyes",
-        value: "googly",
+        trait_type: "Reproduction Type",
+        value: "mp3",
       },
       {
-        trait_type: "Stamina",
-        value: 38,
+        trait_type: "Track Length",
+        value: "3:39",
       },
     ],
   },
   {
-    description: "What a horn!",
+    description: "Ambient music for blobs.",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmZzYevVxn2bLwFWBpM67k74htu6m2pidsFnGcJebgtCA1",
-    name: "Rhino",
+    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    name: "Blob miniworld",
     attributes: [
       {
-        trait_type: "BackgroundColor",
-        value: "pink",
+        trait_type: "Artwork",
+        value: "miniworld",
       },
       {
-        trait_type: "Eyes",
-        value: "googly",
+        trait_type: "Reproduction Type",
+        value: "mp3",
       },
       {
-        trait_type: "Stamina",
-        value: 22,
+        trait_type: "Track Length",
+        value: "2:31",
       },
     ],
   },
   {
-    description: "Is that an underbyte?",
+    description: "Fly away with us.",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmchotzQo58tXY6Qd8foo4bdVaCzUSyqZEabn4no5r8KrX",
-    name: "Fish",
+    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    name: "Butterfly 3D",
     attributes: [
       {
-        trait_type: "BackgroundColor",
-        value: "blue",
+        trait_type: "Artwork",
+        value: "3D world",
       },
       {
-        trait_type: "Eyes",
-        value: "googly",
+        trait_type: "Reproduction Type",
+        value: "mp3",
       },
       {
-        trait_type: "Stamina",
-        value: 15,
+        trait_type: "Track Length",
+        value: "4:15",
       },
     ],
   },
@@ -83,6 +87,7 @@ const nftsMetadata = [
   //   description: "So delicate.",
   //   external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
   //   image: "https://austingriffith.com/images/paintings/flamingo.jpg",
+  //    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
   //   name: "Flamingo",
   //   attributes: [
   //     {
@@ -103,6 +108,7 @@ const nftsMetadata = [
   //   description: "Raaaar!",
   //   external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
   //   image: "https://austingriffith.com/images/paintings/godzilla.jpg",
+  //    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
   //   name: "Godzilla",
   //   attributes: [
   //     {

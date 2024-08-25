@@ -47,6 +47,12 @@ const config: HardhatUserConfig = {
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
     },
+    fuji: {
+      url: "https://api.avax-test.network/ext/bc/C/rpc",
+      gasPrice: 225000000000,
+      chainId: 43113,
+      accounts: [],
+    },
     avalancheLocal: {
       url: `https://automatic-giggle-qvw45qw77qjc4qp5-9650.app.github.dev/ext/bc/eleven1/rpc`,
       accounts: [`0x56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027`], // ,
@@ -68,7 +74,8 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     polygonAmoy: {
-      url: `https://polygon-amoy.g.alchemy.com/v2/${providerApiKey}`,
+      // url: `https://polygon-amoy.g.alchemy.com/v2/${providerApiKey}`,
+      url: `https://rpc-amoy.polygon.technology/`,
       accounts: [deployerPrivateKey],
     },
     optimism: {

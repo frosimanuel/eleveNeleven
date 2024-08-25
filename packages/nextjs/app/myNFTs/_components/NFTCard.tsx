@@ -31,6 +31,9 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         <div className="flex flex-col justify-center mt-1">
           <p className="my-0 text-lg">{nft.description}</p>
         </div>
+        <video controls className="w-full h-8">
+          <source src="https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP" type="audio/mpeg" />
+        </video>
         <div className="flex space-x-3 mt-1 items-center">
           <span className="text-lg font-semibold">Owner : </span>
           <Address address={nft.owner} />
