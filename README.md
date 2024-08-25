@@ -10,7 +10,9 @@
 
 🧪 This NFT Marketplace dApp is designed to facilitate art tokenization for artists, big and small.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript, deployed on Polygon Amoy and Avalanche Fuji Testnets.
+⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript,
+
+🔗 To be deployed on Polygon and Avalanche
 
 ## Quickstart
 
@@ -50,23 +52,22 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Features
 
-## Royalties
-
-## Cross-Chain NFTs
-
-- 🎨 **PolyMint**: PolyMint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists access tokenizing their art without friction.
+🎨 **PolyMint**: PolyMint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists access tokenizing their art without friction.
 
 The first minter of a collection, who pays for cost of the deployment of the NFT contract, gets a share of the royalties of all the NFTs minted in that collection. This creates a market for art investors being eager to first mint a piece of art they like.
 
 The cost of the deployment consists in the gas cost of the deployment transaction, and a custom optional USDC commision set by the artist that gets distributed 90% for the artist and 10% for the marketplace,
 
-- ✅ **Royalties**: When buying and selling art through our market, artists have an option to set a royalty amount between 0.01% and 50%. This royalty is paid to the artist every time the NFT is sold, creating a passive income stream for artists.
+✅ **Royalties**: When buying and selling art through our market, artists have an option to set a royalty amount between 0.01% and 50%. This royalty is paid to the artist every time the NFT is sold, creating a passive income stream for artists.
 
 In the case of PolyMint, the first minter of a collection gets a share of the royalties of all the NFTs minted in that collection.
 
-- 🗄️ **Secure and Transparent**: Securing NFT metadata in FileCoin network to leverage security in the form of access control and trusted storage.
+💸 **USDC Payments**: We use USDC as the main currency for buying and selling art. This helps artists and collectors avoid volatility in the crypto market, and allows them to easily convert their earnings to fiat currency.
 
-- 🧱 **Unlockables**: ...
+🧱 **Native payments**: By leveraging Chainlink Price Feeds, we aim to also offer the possibility of paying with the native gas token of the blockchain the NFTs is being minted on (i.e.: MATIC or ETH).
 
-- 🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function.
-  ...
+🗄️ **Secure and Transparent**: NFT collections metadata is uploaded to Filecoin to guarantee security and trusted decentralized storage of art metadata.
+
+🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function.
+
+### Roadmap
