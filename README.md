@@ -70,4 +70,22 @@ In the case of PolyMint, the first minter of a collection gets a share of the ro
 
 🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function.
 
-### Roadmap
+# Roadmap
+
+## Core development
+
+- Add music to NFTs metadata and integrate with frontend (Reference: [https://docs.opensea.io/docs/metadata-standards](https://docs.opensea.io/docs/metadata-standards))
+
+## Frontend
+
+- Create a page for minting that takes inputs for the metadata of the NFT (Reference: [https://github.com/luloxi/scaffold-class](https://github.com/luloxi/scaffold-class))
+- Create a page for interacting with the marketplace buy function and/or auction function (Reference: [Create a page that interacts with the Marketplace contract (Reference: https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
+- Implement uploading the NFT Metadata to Filecoin instead of IPFS, and use it with a EIP-712 signature for PolyMint. (Reference: [https://viem.sh/docs/utilities/recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
+
+## Smart contracts
+
+- Add USDC as payment method (and maybe stable payment in native gas token with Chainlink Price Feeds) (Reference: [https://github.com/luloxi/Easy2Pay](https://github.com/luloxi/Easy2Pay))
+- Add royalties to NFT and Marketplace (creator, contract owner, 1st minter -optional-) (Reference: [https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
+- Add a functionality to move NFTs between Polygon and Avalanche with Chainlink CCIP (Reference: [https://docs.chain.link/ccip/tutorials/cross-chain-tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
+
+Reference for expanding marketplace functionalities: [https://github.com/Fantom-foundation/Artion-Contracts](https://github.com/Fantom-foundation/Artion-Contracts)
