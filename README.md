@@ -17,6 +17,18 @@
 
 🔗 To be deployed on Polygon and Avalanche
 
+## Deployed artifacts
+
+### Frontend
+
+[https://technai-marketplace.vercel.app/](https://technai-marketplace.vercel.app/)
+
+### Contracts on Polygon Amoy
+
+Mock USDC: [https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6](https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6)
+Mock NFT: [https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410](https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410)
+Marketplace: [https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e](https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e)
+
 ## Quickstart
 
 To get started follow the steps below:
