@@ -25,9 +25,9 @@
 
 ### Contracts on Polygon Amoy
 
-Mock USDC: [https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6](https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6)
-Mock NFT: [https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410](https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410)
-Marketplace: [https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e](https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e)
+- Mock USDC: [https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6](https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6)
+- Mock NFT: [https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410](https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410)
+- Marketplace: [https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e](https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e)
 
 ## Quickstart
 
@@ -36,8 +36,8 @@ To get started follow the steps below:
 1. Open a terminal and run this commands to clone this repo and install dependencies:
 
 ```
-git clone https://github.com/frosimanuel/eleveNeleven.git
-cd eleveNeleven
+git clone https://github.com/luloxi/technai-marketplace.git
+cd technai-marketplace
 yarn install
 ```
 
@@ -67,9 +67,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Features
 
-🤝 **Social Features**: We aim to add social features to our marketplace, like creating profiles, notifications, messaging, following artists, liking NFTs, and commenting on NFTs.
-
-🎨 **PolyMint**: PolyMint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists access tokenizing their art without friction.
+🎨 **Simple Mint**: Simple Mint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging Simple Mint we aim to make artists access tokenizing their art without friction.
 
 The first minter of a collection, who pays for cost of the deployment of the NFT contract, gets a share of the royalties of all the NFTs minted in that collection. This creates a market for art investors being eager to first mint a piece of art they like.
 
@@ -77,23 +75,15 @@ The cost of the deployment consists in the gas cost of the deployment transactio
 
 ✅ **Royalties**: When buying and selling art through our market, artists have an option to set a royalty amount between 0.01% and 50%. This royalty is paid to the artist every time the NFT is sold, creating a passive income stream for artists.
 
-In the case of PolyMint, the first minter of a collection gets a share of the royalties of all the NFTs minted in that collection.
+In the case of Simple Mint, the first minter of a collection gets a share of the royalties of all the NFTs minted in that collection.
 
-💸 **USDC Payments**: We use USDC as the main currency for buying and selling art. This helps artists and collectors avoid volatility in the crypto market, and allows them to easily convert their earnings to fiat currency.
-
-🧱 **Native payments**: By leveraging Chainlink Price Feeds, we aim to also offer the possibility of paying with the native gas token of the blockchain the NFTs is being minted on (i.e.: MATIC or ETH).
-
-🗄️ **Secure and Transparent**: NFT collections metadata is uploaded to Filecoin to guarantee security and trusted decentralized storage of art metadata.
-
-🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function.
+🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function, or the Avalanche Teleporter.
 
 🎶 **Music NFTs**: We add music to NFTs metadata and integrate with frontend, so that artists can tokenize their music and collectors can enjoy it.
 
-🔒 **EIP-712 Signature**: We implement EIP-712 signature for PolyMint, to allow users to sign messages with their private keys, and thus interact with the smart contract in a secure and gasless way.
-
-🎨 **Royalty Standards**: We are still determinating which Royalty standard to implement to NFTs, and thus allow artists to set royalties for their art for all marketplaces that implement the standard.
-
 🔄 **Remixing Feature**: We aim to add remixing feature for NFTs, where the creator receives 30% of the royalties of the remix.
+
+🤝 **Social Features**: We aim to add social features to our marketplace, like creating profiles, notifications, messaging, following artists, liking NFTs, and commenting on NFTs.
 
 # Roadmap
 
