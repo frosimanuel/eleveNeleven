@@ -8,8 +8,7 @@ import {
   // ArrowDownTrayIcon,
   ArrowPathIcon,
   ArrowUpTrayIcon,
-  Bars3Icon,
-  BugAntIcon,
+  Bars3Icon, // BugAntIcon,
   PhotoIcon,
 } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
@@ -31,14 +30,14 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/myNFTs",
     icon: <PhotoIcon className="h-4 w-4" />,
   },
+  // {
+  //   label: "Marketplace",
+  //   href: "/myNFTs",
+  //   icon: <BugAntIcon className="h-4 w-4" />,
+  // },
   {
-    label: "Marketplace",
-    href: "/myNFTs",
-    icon: <BugAntIcon className="h-4 w-4" />,
-  },
-  {
-    label: "PolyMint",
-    href: "/polyMint",
+    label: "Simple Mint",
+    href: "/simpleMint",
     icon: <ArrowUpTrayIcon className="h-4 w-4" />,
   },
   {

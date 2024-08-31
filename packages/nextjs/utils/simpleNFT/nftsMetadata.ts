@@ -1,7 +1,7 @@
 const nftsMetadata = [
   {
     description: "House music for the soul.",
-    external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+    // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmdsAeLoVrhu9APcXZuTGfnptgSrty2rfUULr5bqEEotLK",
     animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
     name: "PiccaWho?",
@@ -22,9 +22,9 @@ const nftsMetadata = [
   },
   {
     description: "Reproduce and repeat.",
-    external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+    // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/Qmf5UMKoWMEmza91tYT9UPx5PeSaburp9VeeN5w6NUFVG8",
-    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    animation_url: "https://ipfs.io/ipfs/QmT4RaimopnKHxAF81ut9MBFLGqun1CyTM39ZEmKxDxkoL",
     name: "Mitosis 42",
     attributes: [
       {
@@ -43,9 +43,9 @@ const nftsMetadata = [
   },
   {
     description: "Ambient music for blobs.",
-    external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+    // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmZzYevVxn2bLwFWBpM67k74htu6m2pidsFnGcJebgtCA1",
-    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    animation_url: "https://ipfs.io/ipfs/QmU7yNcUHCg2XuszsZKcmo113oKdXf6jfNJUF6odNdFoaK",
     name: "Blob miniworld",
     attributes: [
       {
@@ -64,9 +64,9 @@ const nftsMetadata = [
   },
   {
     description: "Fly away with us.",
-    external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+    // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmchotzQo58tXY6Qd8foo4bdVaCzUSyqZEabn4no5r8KrX",
-    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+    animation_url: "https://ipfs.io/ipfs/QmTMwY2gRBoY2auvJZTRMtw7N4ZiPzPMqMBiRbQN5358tk",
     name: "Butterfly 3D",
     attributes: [
       {
