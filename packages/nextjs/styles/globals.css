@@ -2,9 +2,24 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Added by Lulox */
+.invert-colors {
+  filter: invert(100%);
+}
+
+[data-theme="light"] .invert-colors {
+  filter: invert(100%);
+}
+
+[data-theme="dark"] .invert-colors {
+  filter: none;
+}
+
+/* End added by Lulox */
+
 :root,
 [data-theme] {
-  background: #232323;
+  background: oklch(var(--b2));
 }
 
 body {

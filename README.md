@@ -117,6 +117,7 @@ In the case of Simple Mint, the first minter of a collection gets a share of the
 
 ## Phase 4 (More NFT types + Cross-chain + Batch buying)
 
+- **Integrate GraphQL to index NFTs** and save RPC calls
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc)
 - **Support for ERC1155** in the marketplace
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP/Avalanche Teleporter (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens)) | [Avalanche Teleporter](https://docs.avax.network/cross-chain/teleporter/deep-dive)
