@@ -10,6 +10,7 @@ import {
   ArrowUpTrayIcon,
   Bars3Icon, // BugAntIcon,
   PhotoIcon,
+  StarIcon,
 } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
@@ -22,12 +23,8 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "Featured",
+    label: "See collection",
     href: "/",
-  },
-  {
-    label: "Mint collection",
-    href: "/myNFTs",
     icon: <PhotoIcon className="h-4 w-4" />,
   },
   // {
@@ -39,6 +36,11 @@ export const menuLinks: HeaderMenuLink[] = [
     label: "Simple Mint",
     href: "/simpleMint",
     icon: <ArrowUpTrayIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Featured",
+    href: "/grid",
+    icon: <StarIcon className="h-4 w-4" />,
   },
   {
     label: "Transfers",

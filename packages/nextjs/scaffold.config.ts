@@ -37,7 +37,8 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [chains.hardhat],
+  targetNetworks: [chains.polygonAmoy],
+  // targetNetworks: [chains.polygonAmoy],
   // targetNetworks: [chains.polygonAmoy, chains.avalancheFuji],
   // targetNetworks: [chains.hardhat, chains.polygonAmoy, avalancheL1],
 
