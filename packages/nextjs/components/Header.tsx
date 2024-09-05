@@ -8,7 +8,8 @@ import {
   // ArrowDownTrayIcon,
   ArrowPathIcon,
   ArrowUpTrayIcon,
-  Bars3Icon, // BugAntIcon,
+  Bars3Icon,
+  BugAntIcon,
   PhotoIcon,
   StarIcon,
 } from "@heroicons/react/24/outline";
@@ -27,11 +28,11 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/",
     icon: <PhotoIcon className="h-4 w-4" />,
   },
-  // {
-  //   label: "Marketplace",
-  //   href: "/myNFTs",
-  //   icon: <BugAntIcon className="h-4 w-4" />,
-  // },
+  {
+    label: "Marketplace",
+    href: "/marketplace",
+    icon: <BugAntIcon className="h-4 w-4" />,
+  },
   {
     label: "Simple Mint",
     href: "/simpleMint",
@@ -39,7 +40,7 @@ export const menuLinks: HeaderMenuLink[] = [
   },
   {
     label: "Featured",
-    href: "/grid",
+    href: "/featured",
     icon: <StarIcon className="h-4 w-4" />,
   },
   {
@@ -105,7 +106,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start w-auto lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label

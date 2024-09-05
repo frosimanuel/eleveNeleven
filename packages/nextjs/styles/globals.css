@@ -7,6 +7,18 @@
   filter: invert(100%);
 }
 
+.tab-active {
+  @apply bg-red-600 text-white;
+}
+
+.tab-bordered {
+  @apply border-x border-gray-500;
+}
+
+.function-button {
+  @apply bg-red-600 text-white border-none;
+}
+
 [data-theme="light"] .invert-colors {
   filter: invert(100%);
 }
