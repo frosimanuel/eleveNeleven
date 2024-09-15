@@ -144,10 +144,9 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       {activeTab === "sellNFT" && (
         // Render Marketplace content here
         <div className="card-body space-y-3">
-          <p className="text-lg font-semibold">Create Listing</p>
-
           {/* Payable Currency Toggle */}
           <div className="form-control">
+            <p className="text-lg font-semibold">Create Listing</p>
             <span className="label-text font-semibold">Currency</span>
             <label className="label cursor-pointer items-center flex flex-row">
               <span>{payableCurrency === "0" ? "ETH" : "USDC"}</span>

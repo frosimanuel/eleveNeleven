@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatEther, parseEther } from "viem";
+import { formatEther } from "viem";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
@@ -15,8 +15,6 @@ export interface Collectible extends Partial<NFTMetaData> {
   highestBidder?: string;
 }
 
-// For ETH conversion
-
 export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [activeTab, setActiveTab] = useState("buyNFT");
 
@@ -24,10 +22,20 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
   const handleBuyNFT = async () => {
     try {
+      let value;
+
+      if (nft.payableCurrency === "ETH") {
+        // If it's ETH, assume the price is already in wei (smallest ETH unit)
+        value = BigInt(nft.price); // Price should already be in wei
+      } else if (nft.payableCurrency === "USDC") {
+        // If it's USDC, no value needs to be passed in ETH. Just pass 0.
+        value = BigInt(0);
+      }
+
       await MarketplaceWriteContractAsync({
         functionName: "buy",
         args: [BigInt(nft.listingId.toString())],
-        value: parseEther(nft.price),
+        value, // Only pass ETH if it's payableCurrency is ETH
       });
     } catch (err) {
       console.error("Error calling buy function", err);
@@ -41,7 +49,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       : (parseInt(nft.price) / 1e6).toFixed(2); // Format price from micro USDC to USDC
 
   return (
-    <div className="card card-compact bg-base-100  w-[300px] ">
+    <div className="card card-compact bg-base-100 w-[300px]">
       {/* Tabs navigation */}
       <div className="tabs flex justify-center gap-3">
         <a

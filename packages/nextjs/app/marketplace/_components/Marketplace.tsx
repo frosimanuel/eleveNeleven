@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { NFTCard } from "./NFTCard";
-import { useAccount } from "wagmi";
+// import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
@@ -20,7 +20,7 @@ export interface Collectible extends Partial<NFTMetaData> {
 }
 
 export const Marketplace = () => {
-  const { address: connectedAddress } = useAccount();
+  // const { address: connectedAddress } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
 
   const { data: yourCollectibleContract } = useScaffoldContract({
@@ -49,7 +49,7 @@ export const Marketplace = () => {
         try {
           const { args } = event;
           const listingId = args?.listingId;
-          // Display on the info tab
+          // Display on the info tab and or add to the collectible interface
           // const nftContract = args?.nftContract;
           const nftId = args?.nftId;
           const seller = args?.seller;
@@ -84,7 +84,7 @@ export const Marketplace = () => {
     };
 
     fetchListedNFTs();
-  }, [events, yourCollectibleContract, connectedAddress]);
+  }, [events]);
 
   if (isLoadingEvents) {
     return (

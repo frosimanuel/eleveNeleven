@@ -1,42 +1,71 @@
 "use client";
 
 import { lazy, useEffect, useState } from "react";
+import generateTokenURI from "./generateTokenURI";
 import type { NextPage } from "next";
+// import { useAccount } from "wagmi";
+import { InputBase } from "~~/components/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import nftsMetadata from "~~/utils/simpleNFT/nftsMetadata";
 
-// import { NFTStorage } from "nft.storage";
-// const APIKEY = '';
-
 const LazyReactJson = lazy(() => import("react-json-view"));
 
 const SimpleMint: NextPage = () => {
+  // const { address: connectedAddress } = useAccount();
+
+  const [collectionName, setCollectionName] = useState("");
+  const [collectionSymbol, setCollectionSymbol] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [animationUrl, setAnimationUrl] = useState("");
+  const [attributes, setAttributes] = useState([{ traitType: "", value: "" }]);
+
   const [yourJSON, setYourJSON] = useState<object>(nftsMetadata[0]);
   const [loading, setLoading] = useState(false);
   const [uploadedIpfsPath, setUploadedIpfsPath] = useState("");
   const [mounted, setMounted] = useState(false);
+
+  // Automatically update the JSON whenever the fields change
+  useEffect(() => {
+    generateTokenURIString();
+  }, [collectionName, description, image, animationUrl, attributes]);
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  type AttributeField = "traitType" | "value";
+
+  const handleAttributeChange = (index: number, field: AttributeField, value: string) => {
+    const newAttributes = [...attributes];
+    newAttributes[index][field] = value;
+    setAttributes(newAttributes);
+  };
+
+  const addAttribute = () => {
+    setAttributes([...attributes, { traitType: "", value: "" }]);
+  };
+
+  // Function that generates the token URI and updates the JSON
+  const generateTokenURIString = () => {
+    const tokenURI = generateTokenURI(collectionName, description, image, animationUrl, attributes);
+    setYourJSON(JSON.parse(atob(tokenURI.split(",")[1])));
+  };
+
   const handleIpfsUpload = async () => {
     setLoading(true);
-    // const nftStorage = new NFTStorage({ token: APIKEY, });
-    const notificationId = notification.loading("Uploading to Filecoin...");
-    //This was the code intentended to upload to FILECOIN network, but nft.store was decomissioned and no uploads are permited atm
-
-    // const uploadedTonftStorage = await nftStorage.store(yourJSON);
+    const notificationId = notification.loading("Uploading to IPFS...");
     try {
       const uploadedItem = await addToIPFS(yourJSON);
 
       notification.remove(notificationId);
-      notification.success("Uploaded to Filecoin");
+      notification.success("Uploaded to IPFS");
 
       setUploadedIpfsPath(uploadedItem.path);
     } catch (error) {
       notification.remove(notificationId);
-      notification.error("Error uploading to Filecoin");
+      notification.error("Error uploading to IPFS");
       console.log(error);
     } finally {
       setLoading(false);
@@ -45,65 +74,108 @@ const SimpleMint: NextPage = () => {
 
   return (
     <>
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <h1 className="text-center mb-4">
-          <span className="block text-4xl font-bold">PolyMint</span>
-        </h1>
-        <p className="text-center mb-2 px-20">
-          PolyMint is the way for artist to upload their art without needing to pay for minting or transactions,
-          enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists
-          access tokenizing their art without friction.
-        </p>
-        <p className="text-center mb-2 px-20">
-          The first minter of a collection, who pays for cost of the deployment of the NFT contract, gets a share of the
-          royalties of all the NFTs minted in that collection. This creates a market for art investors being eager to
-          first mint a piece of art they like.
-        </p>
-        <p className="text-center mb-2 px-20">
-          The cost of the deployment consists in the gas cost of the deployment transaction, and a custom optional USDC
-          commision set by the artist that gets distributed 90% for the artist and 10% for the marketplace.
-        </p>
+      <div className="collapse bg-base-200">
+        <input type="checkbox" />
+        <div className="collapse-title text-xl font-medium">
+          New to Simple Mint? <strong>Click here! </strong>
+        </div>
+        <div className="collapse-content">
+          <p className="text-center">
+            Simple Mint allows you to upload your art <strong>without needing to pay</strong>.
+            <br />
+            <span className="py-2">
+              {" "}
+              Instead, you upload it and sign a message to <strong>prove you own it</strong>.
+            </span>
+            <br />
+            <br />
+            When someone decides to first buy it, they pay for the price <strong>plus the minting costs.</strong>
+            <br />
+            First minters <strong>get a share of the royalties</strong> of all the NFTs minted in that collection.
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row items-center flex-grow pt-10">
+        {/* Input Fields Section (Left on large screens, full width on mobile) */}
 
-        <p className="text-center mb-2">Press the edit button on each attribute of the collection you want to change</p>
+        <div className="w-full md:w-1/2 px-4">
+          <span className="font-bold p-3">Collection name:</span>
+          <InputBase placeholder="Piccawho?" value={collectionName} onChange={setCollectionName} />
+          <span className="font-bold p-3">Collection symbol:</span>
+          <InputBase placeholder="PW" value={collectionSymbol} onChange={setCollectionSymbol} />
+          <span className="font-bold p-3">Description:</span>
+          <InputBase placeholder="House music for the soul" value={description} onChange={setDescription} />
+          <span className="font-bold p-3">Image URL (can be IPFS):</span>
+          <InputBase placeholder="https:// or ipfs://" value={image} onChange={setImage} />
+          <span className="font-bold p-3">Audio/Video URL (can be IPFS):</span>
+          <InputBase placeholder="https:// or ipfs://" value={animationUrl} onChange={setAnimationUrl} />
 
-        {mounted && (
-          <LazyReactJson
-            style={{ padding: "1rem", borderRadius: "0.75rem" }}
-            src={yourJSON}
-            theme="solarized"
-            enableClipboard={false}
-            onEdit={edit => {
-              setYourJSON(edit.updated_src);
-            }}
-            onAdd={add => {
-              setYourJSON(add.updated_src);
-            }}
-            onDelete={del => {
-              setYourJSON(del.updated_src);
-            }}
-          />
-        )}
-        <button
-          className={`btn btn-secondary mt-4 ${loading ? "loading" : ""}`}
-          disabled={loading}
-          onClick={handleIpfsUpload}
-        >
-          Upload metadata to Filecoin
-        </button>
-        <button
-          className={`btn btn-secondary mt-4 ${loading ? "loading" : ""}`}
-          disabled={loading}
-          onClick={handleIpfsUpload}
-        >
-          Sign metadata (gas free)
-        </button>
-        {uploadedIpfsPath && (
-          <div className="mt-4">
-            <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
-              {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
-            </a>
-          </div>
-        )}
+          {attributes.map((attr, index) => (
+            <div key={index} className="flex space-x-2">
+              <div>
+                <span className="font-bold p-3">Trait type:</span>
+                <InputBase
+                  placeholder="Trait type:"
+                  value={attr.traitType}
+                  onChange={value => handleAttributeChange(index, "traitType", value)}
+                />
+              </div>
+              <div>
+                <span className="font-bold p-3">Trait value:</span>
+                <InputBase
+                  placeholder="Value for trait"
+                  value={attr.value}
+                  onChange={value => handleAttributeChange(index, "value", value)}
+                />
+              </div>
+            </div>
+          ))}
+          <button onClick={addAttribute} className="mt-2 bg-blue-500 text-white p-2 rounded">
+            Add Attribute
+          </button>
+        </div>
+
+        {/* JSON Display Section (Right on large screens, full width on mobile) */}
+        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0">
+          {mounted && (
+            <LazyReactJson
+              style={{ padding: "1rem", borderRadius: "0.75rem" }}
+              src={yourJSON}
+              theme="solarized"
+              enableClipboard={false}
+              onEdit={edit => {
+                setYourJSON(edit.updated_src);
+              }}
+              onAdd={add => {
+                setYourJSON(add.updated_src);
+              }}
+              onDelete={del => {
+                setYourJSON(del.updated_src);
+              }}
+            />
+          )}
+          <button
+            className={`btn btn-secondary mt-4 ${loading ? "loading" : ""}`}
+            disabled={loading}
+            onClick={handleIpfsUpload}
+          >
+            Upload metadata to Filecoin
+          </button>
+          <button
+            className={`btn btn-secondary mt-4 ${loading ? "loading" : ""}`}
+            disabled={loading}
+            onClick={handleIpfsUpload}
+          >
+            Sign metadata (gas free)
+          </button>
+          {uploadedIpfsPath && (
+            <div className="mt-4">
+              <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
+                {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

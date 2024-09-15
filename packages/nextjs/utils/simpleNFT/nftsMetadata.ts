@@ -1,15 +1,15 @@
 const nftsMetadata = [
   {
+    name: "PiccaWho?",
     description: "House music for the soul.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmdsAeLoVrhu9APcXZuTGfnptgSrty2rfUULr5bqEEotLK",
     animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
-    name: "PiccaWho?",
     attributes: [
-      {
-        trait_type: "Artwork",
-        value: "abstract",
-      },
+      // {
+      //   trait_type: "Artwork",
+      //   value: "abstract",
+      // },
       {
         trait_type: "Reproduction Type",
         value: "mp3",

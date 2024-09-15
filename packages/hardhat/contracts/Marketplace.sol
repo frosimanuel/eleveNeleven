@@ -54,7 +54,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
         uint256 date,
         address highestBidder
     );
-    event Purchase(uint256 indexed itemId, address buyer, uint256 price);
+    event Purchase(uint256 indexed itemId, address buyer, Currency currency, uint256 price);
     event UpdatedPrice(uint256 indexed itemId, address owner, uint256 price);
     event NewBid(address buyer, Listing listing, uint256 newBid);
 
@@ -120,14 +120,20 @@ contract Marketplace is ReentrancyGuard, Ownable {
         IERC721(contractAddress).safeTransferFrom(nftSeller, msg.sender, nftId);
         // Transfer sale proceeds to seller, minus royalty
         if (payableCurrency == Currency.USDCToken) {
-            IERC20(USDC).transferFrom(msg.sender, nftSeller, price - ((price * baseRoyalty) / BPS)); // price - royalty
+            bool usdcSuccess = IERC20(USDC).transferFrom(msg.sender, nftSeller, price - ((price * baseRoyalty) / BPS)); // price - royalty
             // Transfer royalty to the royalty receiver
-            IERC20(USDC).transferFrom(msg.sender, royaltyReceiver, (price * baseRoyalty) / BPS); // just royalty
+            bool usdcRoyaltiesSuccess =
+                IERC20(USDC).transferFrom(msg.sender, royaltyReceiver, (price * baseRoyalty) / BPS); // just royalty
+            require(usdcSuccess && usdcRoyaltiesSuccess, "Failed to transfer USDC");
         } else {
-            // Implement AggregatorV3Interface to convert the USD value to the native token equivalent value
+            (bool ethSuccess,) = payable(nftSeller).call{value: price - ((price * baseRoyalty) / BPS)}("");
+            (bool ethRoyaltiesSuccess,) = payable(royaltyReceiver).call{value: (price * baseRoyalty) / BPS}("");
+            require(ethSuccess && ethRoyaltiesSuccess, "Failed to transfer ETH");
         }
+        // Mixed payment
+        // Implement AggregatorV3Interface to convert the USD value to the native token equivalent value
 
-        emit Purchase(listingId, msg.sender, price);
+        emit Purchase(listingId, msg.sender, item.payableCurrency, price);
     }
 
     // * Get current listing price
@@ -201,7 +207,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
         // Update listing status
         listing.isAuction = false;
 
-        emit Purchase(listingId, highestBidder, endBid);
+        emit Purchase(listingId, highestBidder, listing.payableCurrency, endBid);
     }
 
     // * Auction Cancel
