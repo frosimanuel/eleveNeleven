@@ -84,7 +84,7 @@ export const Marketplace = () => {
     };
 
     fetchListedNFTs();
-  }, [events]);
+  }, [events, yourCollectibleContract]);
 
   if (isLoadingEvents) {
     return (
