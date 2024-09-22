@@ -140,6 +140,7 @@ const config: HardhatUserConfig = {
     apiKey: `${etherscanApiKey}`,
   },
   // configuration for etherscan-verify from hardhat-deploy plugin
+  // Add polygon Amoy verification
   verify: {
     etherscan: {
       apiKey: `${etherscanApiKey}`,

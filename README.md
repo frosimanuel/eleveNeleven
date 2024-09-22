@@ -25,9 +25,9 @@
 
 ### Contracts on Polygon Amoy
 
-Mock USDC: [https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6](https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6)
-Mock NFT: [https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410](https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410)
-Marketplace: [https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e](https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e)
+- Mock USDC: [https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6](https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6)
+- Mock NFT: [https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410](https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410)
+- Marketplace: [https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e](https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e)
 
 ## Quickstart
 
@@ -36,8 +36,8 @@ To get started follow the steps below:
 1. Open a terminal and run this commands to clone this repo and install dependencies:
 
 ```
-git clone https://github.com/frosimanuel/eleveNeleven.git
-cd eleveNeleven
+git clone https://github.com/luloxi/technai-marketplace.git
+cd technai-marketplace
 yarn install
 ```
 
@@ -67,9 +67,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Features
 
-🤝 **Social Features**: We aim to add social features to our marketplace, like creating profiles, notifications, messaging, following artists, liking NFTs, and commenting on NFTs.
-
-🎨 **PolyMint**: PolyMint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging PolyMint we aim to make artists access tokenizing their art without friction.
+🎨 **Simple Mint**: Simple Mint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging Simple Mint we aim to make artists access tokenizing their art without friction.
 
 The first minter of a collection, who pays for cost of the deployment of the NFT contract, gets a share of the royalties of all the NFTs minted in that collection. This creates a market for art investors being eager to first mint a piece of art they like.
 
@@ -77,60 +75,65 @@ The cost of the deployment consists in the gas cost of the deployment transactio
 
 ✅ **Royalties**: When buying and selling art through our market, artists have an option to set a royalty amount between 0.01% and 50%. This royalty is paid to the artist every time the NFT is sold, creating a passive income stream for artists.
 
-In the case of PolyMint, the first minter of a collection gets a share of the royalties of all the NFTs minted in that collection.
+In the case of Simple Mint, the first minter of a collection gets a share of the royalties of all the NFTs minted in that collection.
 
-💸 **USDC Payments**: We use USDC as the main currency for buying and selling art. This helps artists and collectors avoid volatility in the crypto market, and allows them to easily convert their earnings to fiat currency.
-
-🧱 **Native payments**: By leveraging Chainlink Price Feeds, we aim to also offer the possibility of paying with the native gas token of the blockchain the NFTs is being minted on (i.e.: MATIC or ETH).
-
-🗄️ **Secure and Transparent**: NFT collections metadata is uploaded to Filecoin to guarantee security and trusted decentralized storage of art metadata.
-
-🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) token transfer function.
+🌐 **Cross-Chain NFTs**: As liquidity fluctuates between blockchains and marketplaces, we want to allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We aim to offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol) or the Avalanche Teleporter token transfer function.
 
 🎶 **Music NFTs**: We add music to NFTs metadata and integrate with frontend, so that artists can tokenize their music and collectors can enjoy it.
 
-🔒 **EIP-712 Signature**: We implement EIP-712 signature for PolyMint, to allow users to sign messages with their private keys, and thus interact with the smart contract in a secure and gasless way.
-
-🎨 **Royalty Standards**: We are still determinating which Royalty standard to implement to NFTs, and thus allow artists to set royalties for their art for all marketplaces that implement the standard.
-
 🔄 **Remixing Feature**: We aim to add remixing feature for NFTs, where the creator receives 30% of the royalties of the remix.
+
+🤝 **Social Features**: We aim to add social features to TECHNAI, like creating profiles, notifications, messaging, following artists, liking NFTs, and commenting on NFTs.
+
+# Roles within the platform
+
+- Small artists
+- Medium/Big artists
+- NFT collectors (collect for the art)
+- NFT investors/traders (collect and trade for the $)
+- Free users
+- Marketplace owner (one address, could be a DAO too)
 
 # Roadmap
 
-## Core development
+## Phase 1 (Marketplace)
 
-- Add music to NFTs metadata and integrate with frontend (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
+- **Page for interacting with the marketplace** buy function and/or auction function (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
+- **Payment in native gas token** and maybe add a mixed pay that allows paying in USDC or native gas token (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 
-## Frontend
+## Phase 2 (Simple Mint)
 
-- Create a page for minting that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
-- Create a page for interacting with the marketplace buy function and/or auction function (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
-- Implement uploading the NFT Metadata to Filecoin instead of IPFS, and use it with a EIP-712 signature for PolyMint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
+- ✅ **Add music to NFTs metadata** and **integrate with frontend** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
+- **Create a contract for SimpleNFT and one for NFTFactory**
+- **Page for minting** that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
+- **Simple minting feature** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction. (Reference: [eip712hashing.sol](https://github.com/Cyfrin/security-and-auditing-full-course-s23/blob/main/eip712hashing.sol))
+- **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
+- **First minter gets a share of the royalties** of all the NFTs minted in that collection
 
-## Smart contracts
+## Phase 3 (Music player + Filecoin)
 
-- Add payment in native gas token and maybe add a mixed pay that allows paying in USDC or native gas token (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- Implement EIP-712 signature for PolyMint (Reference: [eip712hashing.sol](https://github.com/Cyfrin/security-and-auditing-full-course-s23/blob/main/eip712hashing.sol))
-- Add royalties to NFT and Marketplace (creator, contract owner, 1st minter -optional-) (Reference: [Simple Marketplace w/ Royalties](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
-- Determine which Royalty standard to implement to NFTs (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910))
-- Add a functionality to move NFTs between Polygon and Avalanche with Chainlink CCIP (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
+- **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
+- **Upload the NFT Metadata to Filecoin** instead of IPFS, and use it with a EIP-712 signature for Simple Mint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
 
-## Future development
+## Phase 4 (More NFT types + Cross-chain + Batch buying)
 
-### Frontend
+- **Integrate GraphQL to index NFTs** and save RPC calls
+- **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc)
+- **Support for ERC1155** in the marketplace
+- **Functionality to move NFTs between blockchains** with Chainlink CCIP/Avalanche Teleporter (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens)) | [Avalanche Teleporter](https://docs.avax.network/cross-chain/teleporter/deep-dive)
+- **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
+- **Token gated content**: Holders of song NFTs get access to special content for holders
 
-- Introduce web2 social features like creating profiles, following artists, liking NFTs, and commenting on NFTs
-- Notification system for increasing engagement (customizable and ideally with email or mobile notifications)
-- Feature for creating collections of NFTs and displaying them in a gallery
+  Reference for expanding marketplace functionalities: [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts)
+
+## Phase 5 (Social features + Notifications + Free users tipping)
+
+- **Remixing feature for NFTs**, where the creator receives 30% of the royalties of the remix
+- Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
+- **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
+- **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment.
+- **Periodically airdrop dividends** in USDC for creators (and first minters if appliable)
+- **Feature for creating collections** of NFTs and displaying them in a gallery
 - Ability to make your own group/community
-- Ability to create a profile with a linked wallet (could be with account abstraction to make paymaster feature of PolyMint easier)
-- Profile creation with web2.5 login (Twitter, Instagram, Google, etc)
-- Messaging system for artists and collectors
-
-### Smart contracts
-
-- Add remixing feature for NFTs, where the creator receives 30% of the royalties of the remix
-- Add support for ERC1155 to the marketplace
-- Add a functionality to periodically airdrop dividends in USDC for creators (and first minters if appliable)
-
-Reference for expanding marketplace functionalities: [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts)
+- **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
+- **Direct Messaging system** for artists and collectors

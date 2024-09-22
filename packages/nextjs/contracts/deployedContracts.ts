@@ -211,6 +211,12 @@ const deployedContracts = {
             },
             {
               indexed: false,
+              internalType: "enum Marketplace.Currency",
+              name: "currency",
+              type: "uint8",
+            },
+            {
+              indexed: false,
               internalType: "uint256",
               name: "price",
               type: "uint256",
@@ -1662,30 +1668,6 @@ const deployedContracts = {
         tokenOfOwnerByIndex: "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
         totalSupply: "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
       },
-    },
-    Signature712: {
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-      abi: [
-        {
-          inputs: [],
-          stateMutability: "nonpayable",
-          type: "constructor",
-        },
-        {
-          inputs: [],
-          name: "test",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-      ],
-      inheritedFunctions: {},
     },
   },
   80002: {

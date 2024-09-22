@@ -2,9 +2,7 @@
 
 // import Image from "next/image";
 // import Link from "next/link";
-import { CuratedContent } from "./grid/_components/CuratedContent";
-import { ExploreContent } from "./grid/_components/ExploreContent";
-import { PickCategories } from "./grid/_components/PickCategories";
+import MyNFTs from "./myNFTs/page";
 import type { NextPage } from "next";
 
 // import { useAccount } from "wagmi";
@@ -16,11 +14,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div>
-        <PickCategories />
-        <CuratedContent />
-        <ExploreContent />
-      </div>
+      <MyNFTs />
     </>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,6 +11,7 @@ import {
   Bars3Icon,
   BugAntIcon,
   PhotoIcon,
+  StarIcon,
 } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
@@ -23,23 +24,24 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "Featured",
+    label: "See collection",
     href: "/",
-  },
-  {
-    label: "Mint collection",
-    href: "/myNFTs",
     icon: <PhotoIcon className="h-4 w-4" />,
   },
   {
     label: "Marketplace",
-    href: "/myNFTs",
+    href: "/marketplace",
     icon: <BugAntIcon className="h-4 w-4" />,
   },
   {
-    label: "PolyMint",
-    href: "/polyMint",
+    label: "Simple Mint",
+    href: "/simpleMint",
     icon: <ArrowUpTrayIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Featured",
+    href: "/featured",
+    icon: <StarIcon className="h-4 w-4" />,
   },
   {
     label: "Transfers",
@@ -89,6 +91,14 @@ export const HeaderMenuLinks = () => {
  */
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    // Example: Detect the current theme from the 'data-theme' attribute
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    setTheme(currentTheme || "light");
+  }, []);
+
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
     burgerMenuRef,
@@ -96,7 +106,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start w-auto lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
@@ -121,13 +131,18 @@ export const Header = () => {
           )}
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-16 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.png" />
+          <div className="flex relative w-24 h-10">
+            <Image
+              alt="SE2 logo"
+              className={`cursor-pointer ${theme === "light" ? "invert-colors" : ""}`}
+              fill
+              src="/logo.png"
+            />
           </div>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <span className="font-bold leading-tight">TECHNAI</span>
             <span className="text-xs">Music NFT Marketplace</span>
-          </div>
+          </div> */}
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
           <HeaderMenuLinks />
